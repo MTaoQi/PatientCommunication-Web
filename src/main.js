@@ -16,6 +16,5 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 
 
-
 createApp(App).use(router).use(page).use(vue3videoPlay).use(ElementPlus).mount('#app')
 

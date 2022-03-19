@@ -1,28 +1,32 @@
-<template>
-  <div>
-    <vue3VideoPlay v-bind="options" />
-  </div>
+<script setup >
+import { computed, ref } from 'vue';
 
-  
-</template>
+const week = [7, 1, 2, 3, 4, 5, 6];
 
-<script  setup>
-import "vue3-video-play/dist/style.css";
-
-import { reactive} from "vue";
-
-const options = reactive({
-  width: "500px", //播放器高度
-  height: "260px", //播放器高度
-  color: "#409eff", //主题色
-  // currentTime: 60,
-  // speed: false, //关闭进度条拖动
-  title: "", //视频名称
-  src: "http://img.lazymxh.cn/video/taoqi.mp4", //视频源
+const num = ref(1);
+function changeNum() {
+  num.value += 1;
+  if (num.value === 8) {
+    num.value = 1;
+  }
+}
+const showWeek = computed(() => {
+  let index = week.indexOf(num.value);
+ const newweek=[];
+  for (let i = 0; i < week.length; i++) {
+    index -= 1;
+    if (index === -1) index = 6;
+   newweek.push( week[index]);
+  }
+  return newweek;
 });
 
 </script>
 
+<template>
+  <!-- <div>{{ num }}</div> -->
+  <button @click="changeNum">num+1</button>
+  <p>{{ showWeek }}</p>
+</template>
 
-<style scoped>
-</style>
+<style scoped></style>

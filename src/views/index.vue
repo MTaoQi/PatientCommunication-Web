@@ -15,9 +15,9 @@
         >
           <img alt="logo" src="../assets/logo.png" />
           <el-menu-item index="1">关于</el-menu-item>
-          <el-menu-item index="2">疾病类型</el-menu-item>
-          <el-menu-item index="3">治疗类别</el-menu-item>
-          <el-menu-item index="4">疾病症状</el-menu-item>
+          <el-menu-item index="2">类型</el-menu-item>
+          <el-menu-item index="3">治疗</el-menu-item>
+          <el-menu-item index="4">症状</el-menu-item>
         </el-menu>
       </div>
       <!-- 搜索框 -->
@@ -40,7 +40,7 @@
           <img
             src="../assets/login2.png"
             alt=""
-            style="width: 40%; height: 40%"
+            style="width: 40%; height: 40%; display: flex; margin: 0 auto"
           />
           <el-form :model="form" style="width: 70%; margin: 0 auto">
             <el-form-item>
@@ -101,7 +101,9 @@
               "
             ></div>
             <div class="zcright" style="width: 50%">
-              <span>希望，这就是它开始的地方</span>
+              <span style="display: block; text-align: center"
+                >希望，这就是它开始的地方</span
+              >
               <el-form
                 :model="formzc"
                 style="width: 70%; margin: 0 auto"
@@ -145,19 +147,11 @@
                 </el-form-item>
                 <el-form-item
                   prop="username"
-                  :rules="[
-                    {
-                      required: true,
-                      message: '请输入用户名',
-                      trigger: 'blur',
-                    },
-                    {
-                      min: 3,
-                      max: 5,
-                      message: '用户名长度3-5',
-                      trigger: 'blur',
-                    },
-                  ]"
+                  :rules="{
+                    required: true,
+                    message: '请输入用户名',
+                    trigger: 'blur',
+                  }"
                 >
                   <el-input
                     placeholder="Username"
@@ -226,22 +220,22 @@
       <el-sub-menu index="1">
         <template #title><span class="iconfont icon-zhankai1"></span></template>
         <el-input
-          v-model="input2"
-          class="w-50 m-2"
+          v-model="input1"
           placeholder="Select"
           :suffix-icon="Search"
         />
         <el-menu-item index="1-1">关于</el-menu-item>
-        <el-menu-item index="1-2">疾病类型</el-menu-item>
-        <el-menu-item index="1-3">治疗类别</el-menu-item>
-        <el-menu-item index="1-4">疾病症状</el-menu-item>
-        <el-row>
+        <el-menu-item index="1-2">类型</el-menu-item>
+        <el-menu-item index="1-3">治疗</el-menu-item>
+        <el-menu-item index="1-4">症状</el-menu-item>
+        <el-row style="display:flex;justify-content:center">
           <!-- 下拉登录 -->
           <el-button
             color="#827e73"
             plain
             @click="dialogFormVisible1 = true"
             round
+            style="margin:0 10px;"
             >登录</el-button
           >
           <el-dialog v-model="dialogFormVisible1" width="80%">
@@ -250,7 +244,7 @@
               alt=""
               style="width: 60%; margin: 0 auto; display: flex"
             />
-            <el-form :model="form" style="width: 80%; margin: 0 auto" >
+            <el-form :model="form" style="width: 80%; margin: 0 auto">
               <el-form-item>
                 <el-input
                   id="unique"
@@ -293,7 +287,7 @@
           <!-- 下拉注册 第二次-->
           <el-button
             color="#FFD700"
-            style="color: black"
+            style="color: black;margin:0 10px;"
             @click="zhucedialogpc1 = true"
             round
             >注册</el-button
@@ -339,10 +333,11 @@
               </el-form-item>
               <el-form-item
                 prop="username"
-                :rules="[
-                  { required: true, message: '请输入用户名', trigger: 'blur' },
-                  { min: 3, max: 5, message: '用户名长度3-5', trigger: 'blur' },
-                ]"
+                :rules="{
+                  required: true,
+                  message: '请输入用户名',
+                  trigger: 'blur',
+                }"
               >
                 <el-input
                   placeholder="Username"
@@ -352,11 +347,11 @@
                 ></el-input>
               </el-form-item>
               <el-form-item
-             prop="password"
-                  :rules="[
-                    { required: true, message: '请输入密码', trigger: 'blur' },
-                    { min: 6, message: '请输入6位以上密码', trigger: 'blur' },
-                  ]"
+                prop="password"
+                :rules="[
+                  { required: true, message: '请输入密码', trigger: 'blur' },
+                  { min: 6, message: '请输入6位以上密码', trigger: 'blur' },
+                ]"
               >
                 <el-input
                   placeholder="Password"
@@ -440,20 +435,12 @@
               ></el-input>
             </el-form-item>
             <el-form-item
-             prop="username"
-                  :rules="[
-                    {
-                      required: true,
-                      message: '请输入用户名',
-                      trigger: 'blur',
-                    },
-                    {
-                      min: 3,
-                      max: 5,
-                      message: '用户名长度3-5',
-                      trigger: 'blur',
-                    },
-                  ]"
+              prop="username"
+              :rules="{
+                required: true,
+                message: '请输入用户名',
+                trigger: 'blur',
+              }"
             >
               <el-input
                 placeholder="Username"
@@ -463,11 +450,11 @@
               ></el-input>
             </el-form-item>
             <el-form-item
-            prop="password"
-                  :rules="[
-                    { required: true, message: '请输入密码', trigger: 'blur' },
-                    { min: 6, message: '请输入6位以上密码', trigger: 'blur' },
-                  ]"
+              prop="password"
+              :rules="[
+                { required: true, message: '请输入密码', trigger: 'blur' },
+                { min: 6, message: '请输入6位以上密码', trigger: 'blur' },
+              ]"
             >
               <el-input
                 placeholder="Password"
@@ -503,6 +490,7 @@
     </el-menu>
   </div>
   <!-- 手机 web 内容 -->
+
   <!-- 轮播图 -->
   <div class="lunbotu">
     <el-carousel indicator-position="outside" height="150px">
@@ -512,46 +500,89 @@
       </el-carousel-item>
     </el-carousel>
   </div>
-  <!-- 与同行联系 -->
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-sm-12">
-        <h5>与同行联系</h5>
-        <span>在这里你不是独自一人</span>
-        <div class="bottom">
-          <el-button type="button" class="btn btn-warning btn-sm" @click="dialogvideo = true">
-            认识淘气
-          </el-button>
-  
-           <el-dialog v-model="dialogvideo" width="80%"><vue3VideoPlay v-bind="options" /></el-dialog> 
-          <img
-            src="http://img.lazymxh.cn/images/patient/tao.jpg"
-            alt=""
-            style="
-              width: 25px;
-              height: 25px;
-              margin-left: 20px;
-              margin-right: 10px;
-              border-radius: 0.5rem;
-            "
-          />
-          <span>patient成员</span>
-        </div>
-      </div>
-      <!-- <div class="col-*-*"></div>       -->
-    </div>
-  </div>
   <!-- 视频 -->
   <!-- <div :class="[isvideo ? 'isv' : 'nov']">
     <div style="display: flex; justify-content: center">
       <vue3VideoPlay v-bind="options" />
     </div>
   </div> -->
-  <!-- 一起学习 -->
+  <div class="container">
+    <!-- 与同行联系 -->
+    <div class="title0">
+      <h5>与同行联系</h5>
+      <p>在这里你不是独自一人</p>
+      <div class="bottom">
+        <el-button
+          type="button"
+          class="btn btn-warning btn-sm"
+          @click="dialogvideo = true"
+        >
+          认识淘气
+        </el-button>
+
+        <el-dialog v-model="dialogvideo" width="80%"
+          ><vue3VideoPlay v-bind="options"
+        /></el-dialog>
+        <img
+          src="http://img.lazymxh.cn/images/patient/tao.jpg"
+          alt=""
+          style="
+            width: 25px;
+            height: 25px;
+            margin-left: 20px;
+            margin-right: 10px;
+            border-radius: 0.5rem;
+          "
+        />
+        <span>patient成员</span>
+      </div>
+    </div>
+
+    <el-divider content-position="left" border-style="dashed"
+      >少一分疼痛</el-divider
+    >
+    <!-- 一起学习 -->
+    <div class="title1">
+      <h5>一起学习</h5>
+      <p>从那些最了解您的病情的人那里获得建议和支持</p>
+    </div>
+    <div class="row">
+      <div
+        class="col-sm-4 col-lg-4"
+        v-for="(v, i) in about1"
+        :key="i"
+        style="display: flex; flex-flow: column"
+      >
+        <img :src="pic + v.pic1" alt="" />
+        <span>{{ v.title1 }}</span>
+        <span>{{ v.content1 }}</span>
+      </div>
+    </div>
+    <el-divider content-position="right" border-style="dashed"
+      >多一分希望</el-divider
+    >
+    <div class="title1">
+      <h5>掌控全局</h5>
+      <p>实时跟踪和监控您自己的个人健康数据。</p>
+    </div>
+    <div class="row">
+      <div
+        class="col-sm-4 col-lg-4"
+        v-for="(v, i) in about2"
+        :key="i"
+        style="display: flex; flex-flow: column"
+      >
+        <img :src="pic + v.pic2" alt="" />
+        <span>{{ v.title2 }}</span>
+        <span>{{ v.content2 }}</span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script >
 // import HelloWorld from '@/components/HelloWorld.vue'
+
 import "vue3-video-play/dist/style.css";
 import { ref, reactive, onMounted } from "vue";
 import "../assets/font/iconfont.css";
@@ -606,7 +637,6 @@ export default {
     // };
     const activeIndex1 = ref("1");
     const input1 = ref("");
-    const input2 = ref("");
     const dialogFormVisible = ref(false);
     const dialogFormVisible1 = ref(false);
     const zhucedialogpc = ref(false);
@@ -619,6 +649,8 @@ export default {
     });
     const info = ref();
     const list = ref([]);
+    const about1 = ref();
+    const about2 = ref();
     const pic = ref("http://img.lazymxh.cn");
     const axios = require("axios");
     const login = () => {
@@ -626,8 +658,9 @@ export default {
         .post("/api/disease/user/login", form)
         .then(function (response) {
           console.log(response);
-          info.value = response.data.userid;
-          if (info.value != 0) {
+          info.value = response.data.data;
+          console.log(info.value);
+          if (info.value == 1 && response.data.code == 200) {
             ElNotification({
               title: "欢迎登录",
               message: "登录成功",
@@ -643,7 +676,7 @@ export default {
               sessionStorage.setItem("user", "");
               sessionStorage.setItem("password", "");
             }
-            router.push("../components/HelloWorld");
+            router.push("../components/loginindex");
           } else {
             ElNotification({
               title: "登录失败",
@@ -685,13 +718,26 @@ export default {
         checked.value = !checked.value;
       }
 
+      function getCarousel() {
+        return axios.get("/api/disease/carousel/pic");
+      }
+
+      function getAbout1() {
+        return axios.get("/api/disease/about1/getTextpic1");
+      }
+      function getAbout2() {
+        return axios.get("/api/disease/about2/getTextpic2");
+      }
+
       // 向给定ID的用户发起请求  //获取轮播图
       axios
-        .get("/api/disease/carousel/pic")
+        .all([getCarousel(), getAbout1(), getAbout2()])
         .then(function (response) {
           // 处理成功情况
           console.log(response);
-          list.value = response.data;
+          list.value = response[0].data.data;
+          about1.value = response[1].data.data;
+          about2.value = response[2].data.data;
         })
         .catch(function (error) {
           // 处理错误情况
@@ -734,16 +780,11 @@ export default {
             .post("/api/disease/user/registe", formzc)
             .then(function (response) {
               console.log(response);
-              infozc.value = response.data.success;
+
+              infozc.value = response.data.code;
               console.log(formzc.symptoms);
-              if (infozc.value == 0) {
-                ElMessage({
-                  showClose: true,
-                  message: "用户名或邮箱已存在",
-                  center: true,
-                  type: "warning",
-                });
-              } else {
+              console.log(infozc.value);
+              if (infozc.value == 200) {
                 ElMessage({
                   showClose: true,
                   message: "注册成功，已登录",
@@ -751,6 +792,13 @@ export default {
                   type: "success",
                 });
                 router.push("../components/HelloWorld");
+              } else {
+                ElMessage({
+                  showClose: true,
+                  message: "用户名或邮箱已存在",
+                  center: true,
+                  type: "warning",
+                });
               }
             })
 
@@ -770,11 +818,12 @@ export default {
     const forgotpwd = () => {
       router.push("../components/Forgotpwd");
     };
+    
 
     return {
       activeIndex1,
       input1,
-      input2,
+    
       dialogFormVisible,
       checked,
       form,
@@ -786,7 +835,6 @@ export default {
       dialogFormVisible1,
       zhucedialogpc,
       formzc,
-
       User,
       QuestionFilled,
       zhucedialogpc1,
@@ -798,15 +846,15 @@ export default {
       pic,
       list,
       options,
-    
       dialogvideo,
       validate,
+      about1,
+      about2,
     };
   },
 };
 </script>
 <style>
-
 .y {
   display: none;
 }
@@ -820,12 +868,12 @@ export default {
 .menu img {
   width: 4.5rem;
   height: 3.6rem;
-  margin: 0 1rem;
+  margin: 0 4rem;
 }
 /*搜索框 */
-.w-50 {
+/* .w-50 {
   width: 20rem !important;
-}
+} */
 
 .mobile-menu {
   display: none;
@@ -840,7 +888,12 @@ export default {
   justify-content: space-between;
   margin: 0 auto;
 }
-.container {
+/* .container {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-width: 100%;
+} */
+.topnav {
   margin: 0 !important;
   padding: 0 !important;
   min-width: 100%;
@@ -867,10 +920,14 @@ export default {
 .col-lg-2 {
   justify-content: space-evenly;
 }
-.col-sm-12,
-.col-sm-12 {
+/* .col-sm-12,
+.col-lg-12 {
   padding: 0 !important;
   margin-bottom: 10px;
+} */
+.title0,
+.title1 {
+  text-align: center;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -927,6 +984,7 @@ export default {
   #refPlayerWrap {
     width: 100%;
   }
- 
+   
+
 }
 </style>
