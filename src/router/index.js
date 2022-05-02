@@ -3,10 +3,25 @@ import {
   createWebHistory
 } from 'vue-router'
 import index from '../views/index.vue'
-import registo from '../views/registo.vue'
+import searchdisease from '../views/searchdisease.vue'
 import loginindex from '../components/loginindex.vue'
 import Forgotpwd from '../components/Forgotpwd.vue'
-import test from '../components/test.vue'
+import mood from '../components/mood.vue'
+import t from '../components/t.vue'
+import communication from '../components/communication.vue'
+import kind from '../components/kind.vue'
+import kinddetail from '../components/kinddetail.vue'
+import treat from '../components/treat.vue'
+import treatdetail from "../components/treatdetail.vue"
+import search from '../components/search.vue'
+import symptoms from '../components/symptoms.vue'
+import bbs from '../components/bbs.vue'
+import violations from '../components/violations.vue'
+import num from '../components/num.vue'
+import manage from '../components/manage.vue'
+import dayme from '../components/dayme.vue'
+import error from "../components/error.vue"
+
 
 //导入进度条nprogress
 import NProgress from 'nprogress'
@@ -25,9 +40,9 @@ const routes = [{
     component: index
   },
   {
-    path: '/registo',
-    name: 'registo',
-    component: registo
+    path: '/searchdisease',
+    name: 'searchdisease',
+    component: searchdisease
   },
   {
     path: '/loginindex',
@@ -40,10 +55,90 @@ const routes = [{
     component: Forgotpwd
   },
   {
-    path: '/test',
-    name: 'test',
-    component: test
-  }
+    path: '/mood',
+    name: 'mood',
+    component: mood
+  },
+  {
+    path: '/t',
+    name: 't',
+    component: t
+  }, 
+  {
+    path: '/communication',
+    name: 'communication',
+    component: communication
+  },
+  {
+    path: '/kind',
+    name: 'kind',
+    component: kind
+  },
+  {
+    path: '/kinddetail/:name',
+    name: 'kinddetail',
+    component: kinddetail
+  },
+  {
+    path: '/treat',
+    name: 'treat',
+    component: treat
+  },
+  {
+    path: '/treatdetail',
+    name: 'treatdetail',
+    component: treatdetail
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: search
+  },
+  {
+    path: '/symptoms',
+    name: 'symptoms',
+    component: symptoms
+  },
+  {
+    path: '/bbs',
+    name: 'bbs',
+    component: bbs
+  },
+  {
+    path: '/violations',
+    name: 'violations',
+    component: violations
+  },
+  {
+    path: '/num',
+    name: 'num',
+    component: num
+  },
+  {
+    path: '/manage',
+    name: 'manage',
+    component: manage
+  },
+  {
+    path: '/dayme',
+    name: 'dayme',
+    component: dayme
+  },
+  {
+    path: '/error',
+    name:"error",
+    component: error,
+    alias:"/cuowu"  //别名 
+  },
+  {
+    path:'/:pathMatch(.*)*',
+    redirect:'/error',//重定向 
+  },   
+ 
+   
+   
+   
+   
    
 
   // {

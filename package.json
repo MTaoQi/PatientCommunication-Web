@@ -15,9 +15,11 @@
     "element-plus": "^1.3.0-beta.5",
     "jquery": "^3.6.0",
     "nprogress": "^0.2.0",
+    "pinia": "^2.0.0-rc.10",
     "vue": "^3.2.31",
     "vue-router": "^4.0.12",
-    "vue3-video-play": "^1.3.1-beta.6"
+    "vue3-video-play": "^1.3.1-beta.6",
+    "wangeditor": "^4.7.12"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.8",
@@ -31,7 +33,8 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
     "unplugin-auto-import": "^0.5.9",
-    "unplugin-vue-components": "^0.17.11"
+    "unplugin-vue-components": "^0.17.11",
+    "vue-particles": "^1.0.9"
   },
   "eslintConfig": {
     "root": true,

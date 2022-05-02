@@ -14,19 +14,20 @@
           active-text-color="#ffd04b"
         >
           <img alt="logo" src="../assets/logo.png" />
-          <el-menu-item index="1">关于</el-menu-item>
-          <el-menu-item index="2">类型</el-menu-item>
-          <el-menu-item index="3">治疗</el-menu-item>
-          <el-menu-item index="4">症状</el-menu-item>
+          <router-link to="/" append><el-menu-item index="1">关于</el-menu-item></router-link> 
+          <router-link to="../components/kind" append><el-menu-item index="2">类型</el-menu-item></router-link>
+         <router-link to="../components/treat" append> <el-menu-item index="3">治疗</el-menu-item></router-link>
+         <router-link to="../components/symptoms"><el-menu-item index="4">症状</el-menu-item></router-link> 
         </el-menu>
       </div>
       <!-- 搜索框 -->
       <div class="col-sm-4 col-lg-4">
         <el-input
           v-model="input1"
-          class="w-50 m-2"
-          placeholder="Select"
+          @change="handleChange(input1)"
+          placeholder="请输入疾病名称"
           :suffix-icon="Search"
+          style="width:70%"
         ></el-input>
         <!-- <span class="iconfont icon-sousuo"></span> -->
       </div>
@@ -74,6 +75,10 @@
                 >忘记密码？</span
               >
             </div>
+             <el-checkbox
+                v-model="checked2"
+                label="管理员身份"
+              ></el-checkbox>
             <el-button
               type="warning"
               style="width: 100%; margin: 20px 0"
@@ -221,13 +226,14 @@
         <template #title><span class="iconfont icon-zhankai1"></span></template>
         <el-input
           v-model="input1"
-          placeholder="Select"
+         @change="handleChange(input1)"
+          placeholder="请输入疾病名称"
           :suffix-icon="Search"
         />
-        <el-menu-item index="1-1">关于</el-menu-item>
-        <el-menu-item index="1-2">类型</el-menu-item>
-        <el-menu-item index="1-3">治疗</el-menu-item>
-        <el-menu-item index="1-4">症状</el-menu-item>
+            <router-link to="/" append> <el-menu-item index="1-1">关于</el-menu-item></router-link>
+        <router-link to="../components/kind" append>  <el-menu-item index="1-2">类型</el-menu-item></router-link>
+            <router-link to="../components/treat" append>   <el-menu-item index="1-3">治疗</el-menu-item></router-link>
+                <router-link to="../components/symptoms"> <el-menu-item index="1-4">症状</el-menu-item></router-link>
         <el-row style="display:flex;justify-content:center">
           <!-- 下拉登录 -->
           <el-button
@@ -276,6 +282,10 @@
                   >忘记密码？</span
                 >
               </div>
+              <el-checkbox
+                v-model="checked2"
+                label="管理员身份"
+              ></el-checkbox>
               <el-button
                 type="warning"
                 style="width: 100%; margin: 20px 0"
@@ -578,11 +588,24 @@
       </div>
     </div>
   </div>
+
+  
+   <div class="beian" style="margin-top:60px;font-size:12px;display: flex;
+    flex-flow: column;
+    align-items: center;background-color: #282a2c99;padding:20px 0;">
+    <img src="https://img.shields.io/badge/%C2%A92022-%E6%82%A3%E8%80%85%E4%BA%A4%E6%B5%81-%23FFD700" alt="">
+    <div style="margin-top:10px;">
+    <a target="_blank" href="https://beian.miit.gov.cn" rel="nofollow"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#FFFFFF;">冀ICP备2021028836号-1</p></a>
+    <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13040602000259" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="../assets/备案图标.png" style="float:left;margin-left:10px;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#FFFFFF;">冀公网安备 13040602000259号</p></a>
+    </div>
+  </div> 
+
+ 
 </template>
 
 <script >
 // import HelloWorld from '@/components/HelloWorld.vue'
-
+import pinia from '../pinia';
 import "vue3-video-play/dist/style.css";
 import { ref, reactive, onMounted } from "vue";
 import "../assets/font/iconfont.css";
@@ -602,6 +625,7 @@ export default {
     // HelloWorld
   },
   setup() {
+    const store = pinia();
     const emailisTrue = ref();
     const unameisTrue = ref();
     const pwdisTrue = ref();
@@ -643,11 +667,12 @@ export default {
     const zhucedialogpc1 = ref(false);
     const router = useRouter();
     const checked = ref(false);
+    const checked2 = ref(false);
     const form = reactive({
       email: "",
       password: "",
     });
-    const info = ref();
+    // const info = ref();
     const list = ref([]);
     const about1 = ref();
     const about2 = ref();
@@ -658,16 +683,23 @@ export default {
         .post("/api/disease/user/login", form)
         .then(function (response) {
           console.log(response);
-          info.value = response.data.data;
-          console.log(info.value);
-          if (info.value == 1 && response.data.code == 200) {
+          if (response.data.code == 200) {
+            if(checked2.value==true && response.data.data[0].roleid!=1){
+              ElNotification({
+              title: "登录失败",
+              message: "没有管理员权限",
+              type: "error",
+            });     
+
+            }else{
             ElNotification({
               title: "欢迎登录",
               message: "登录成功",
               type: "success",
             });
+           sessionStorage.setItem("userid", response.data.data[0].userid);
+            store.setUserislogin(response.data.code);
             if (checked.value == true) {
-              console.log(1);
               sessionStorage.setItem("user", form.email);
               sessionStorage.setItem("password", form.password);
               console.log(form.email);
@@ -676,13 +708,14 @@ export default {
               sessionStorage.setItem("user", "");
               sessionStorage.setItem("password", "");
             }
-            router.push("../components/loginindex");
+            router.push("../components/loginindex");}
           } else {
             ElNotification({
               title: "登录失败",
               message: "用户名或密码错误",
               type: "error",
-            });
+            });         
+          store.setUserislogin(response.data.code);
             sessionStorage.setItem("user", "");
             sessionStorage.setItem("password", "");
           }
@@ -791,7 +824,7 @@ export default {
                   center: true,
                   type: "success",
                 });
-                router.push("../components/HelloWorld");
+                router.push("../components/loginindex");
               } else {
                 ElMessage({
                   showClose: true,
@@ -818,6 +851,16 @@ export default {
     const forgotpwd = () => {
       router.push("../components/Forgotpwd");
     };
+
+    function handleChange(input1){
+      router.push({
+        path: "/searchdisease",
+        query: {
+          keywordDis: input1,
+        },
+      });
+     
+    }
     
 
     return {
@@ -826,6 +869,7 @@ export default {
     
       dialogFormVisible,
       checked,
+      checked2,
       form,
       Message,
       Lock,
@@ -850,11 +894,19 @@ export default {
       validate,
       about1,
       about2,
+      handleChange
     };
   },
 };
 </script>
 <style>
+
+.router-link-active {
+  text-decoration: none;
+}
+a{
+text-decoration: none!important;
+}
 .y {
   display: none;
 }
