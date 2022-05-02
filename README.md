@@ -24,7 +24,7 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/). -->
 
 
-
+# 少一分疼痛，多一分希望
 # 患者交流网站的时间线
 <!-- https://img.lazymxh.cn/images/patient/%E5%8E%86%E7%A8%8B1.jpg -->
 ### 01
