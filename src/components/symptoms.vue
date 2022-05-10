@@ -131,6 +131,7 @@ function init() {
 function sym(){
   axios.get('/api/disease/kinddetail/num').then(res => {
     list.value = res.data.data;
+    // [ { "symname": "情绪低落", "num": 13 }, { "symname": "疼痛", "num": 12 }...]
     //只是遍历前五个
     for(let i = 0;i<5;i++){
       x.value.push(list.value[i].symname)

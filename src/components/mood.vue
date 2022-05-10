@@ -70,7 +70,7 @@ export default {
     const syncHTML = () => {
       if (radio.value != "" && input.value != "") {
         // content.html = instance.txt.html();
-        write.value = instance.txt.text();
+        write.value = instance.txt.html();
         axios
           .all([postwrite(), getselmood()])
           .then(function (response) {

@@ -145,6 +145,7 @@
       >
         <div style="display: flex; justify-content: space-between">
           <p>{{ v.username }}</p>
+          <!-- 点击菜单项后会触发事件 -->
           <el-dropdown @command="handleCommand" v-show="sorb(v.userid)">
             <button style="border: 0; background: #fff">
               <el-icon><more-filled /></el-icon>
@@ -193,7 +194,8 @@
             
        
         <p style="font-weight: bold; margin: 0">{{ v.titlepc }}</p>
-        <p>{{ v.contentpc }}</p>
+        <!-- <p>{{ v.contentpc }}</p> -->
+        <p v-html="v.contentpc"></p>
         <div style="display: flex; justify-content: space-between">
           <div>
             <button style="border: 0; background: #fff" @click="like(v.id, i)">
@@ -735,7 +737,7 @@ const showWeek = computed(() => {
   const newweek = [];
   for (let i = 0; i < week.length; i++) {
     index -= 1;
-    if (index === -1) index = 6;
+    if (index == -1) index = 6;
     newweek.push(week[index]);
   }
   return newweek;

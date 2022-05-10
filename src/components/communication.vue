@@ -7,7 +7,8 @@
       >
         <p>{{ info.username }}</p>
         <h5>{{ info.titlepc }}</h5>
-        <span>{{ info.contentpc }}</span>
+        <!-- <span>{{ info.contentpc }}</span> -->
+        <span v-html="info.contentpc"></span>
         <div style="display: flex; justify-content: space-between">
           <span>有益：{{ info.numlike }}</span>
           <span>支持：{{ info.numcollection }}</span>
@@ -128,7 +129,8 @@ axios
   background: url(http://img.lazymxh.cn/images/patient/sanjiaojin.jpg) no-repeat
     center center;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  min-height: 600px;
   /*把背景图片放大到适合元素容器的尺寸，图片比例不变*/
   background-size: cover;
   font-weight: bold;
