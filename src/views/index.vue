@@ -818,7 +818,6 @@ export default {
               console.log(formzc.symptoms);
               console.log(infozc.value);
               if (infozc.value == 200) {
-              
                 ElMessage({
                   showClose: true,
                   // message: "注册成功，已登录",
@@ -826,7 +825,6 @@ export default {
                   center: true,
                   type: "success",
                 });
-                
                 // router.push("../components/loginindex");
                 
               } else {
