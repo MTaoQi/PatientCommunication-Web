@@ -255,7 +255,7 @@ export default {
       Active1,
       Active2,
       Active3,
-      // active,
+      active,
       totalTime,
       content,
       input1,
