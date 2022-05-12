@@ -13,7 +13,8 @@
       <h6>{{item.username}}</h6>
       <span>{{item.time}}</span>
       <p>{{item.titlepc}}</p>
-      <p>{{item.contentpc}}</p>
+      <!-- <p>{{item.contentpc}}</p> -->
+      <p v-html="item.contentpc"></p>
       <div class="bot">
           <span class="iconfont icon-dianzan">{{item.numlike}}</span>
           <span class="iconfont icon-shoucang">{{item.numcollection}}</span>{{plnum(item.id)}}
